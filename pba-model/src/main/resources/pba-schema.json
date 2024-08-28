@@ -1,0 +1,500 @@
+{
+	"id": "http://analytics.ericsson.se/pba-schema#",
+	"$schema": "http://json-schema.org/schema#",
+	"description": "schema for PBA",
+	"type": "object",
+	"javaType": "com.ericsson.component.aia.sdk.pba.model.PBAInstance",
+	"required": [
+		"pba"
+	],
+	"properties": {
+		"pba": {
+			"$ref": "#/definitions/pba"
+		}
+	},
+	"definitions": {
+		"pba": {
+			"type": "object",
+			"properties": {
+				"status": {
+					"default": "ACTIVE",
+					"type": "string"
+				},
+				"authorInfo": {
+					"$ref": "#/definitions/authorInfo"
+				},
+				"serviceInfo": {
+					"$ref": "#/definitions/serviceInfo"
+				},
+				"applicationInfo": {
+					"$ref": "#/definitions/pbaInfo"
+				},
+				"templateInfo": {
+					"$ref": "#/definitions/pbaInfo"
+				},
+				"icon": {
+					"type": "string"
+				},
+				"scmInfo": {
+					"$ref": "#/definitions/scmInfo"
+				},
+				"processorInfo": {
+					"$ref": "#/definitions/processorInfo"
+				},
+				"extensionPoints": {
+					"$ref": "#/definitions/extensionPoints"
+				},
+				"integrationPoints": {
+					"$ref": "#/definitions/integrationPoints"
+				},
+				"buildInfo": {
+					"$ref": "#/definitions/buildInfo"
+				},
+				"deploymentInfo": {
+					"$ref": "#/definitions/deploymentInfo",
+					"isrequired": true
+				}
+			}
+		},
+		"authorInfo": {
+			"type": "object",
+			"required": [
+				"author",
+				"email",
+				"publishingDate",
+				"location"
+			],
+			"properties": {
+				"author": {
+					"type": "string", 
+					"isrequired": true
+				},
+				"email": {
+					"type": "string", 
+					"isrequired": true
+				},
+				"publishingDate": {
+					"type": "string", 
+					"isrequired": true
+				},
+				"location": {
+					"type": "string", 
+					"isrequired": true
+				}
+			}
+		},
+		"serviceInfo": {
+			"javaType": "com.ericsson.component.aia.sdk.pba.model.ServiceInfo",
+			"type": "object",
+			"required": [
+				"serviceType",
+				"technology",
+				"version"
+			],
+			"properties": {
+				"id": {
+					"type": "string"
+				},
+				"description": {
+					"type": "string", 
+					"isrequired": true
+				},
+				"serviceType": {
+					"type": "string", 
+					"isrequired": true
+				},
+				"technology": {
+					"type": "string", 
+					"isrequired": true
+				},
+				"version": {
+					"type": "string", 
+					"isrequired": true
+				}
+			}
+		},
+		"pbaInfo": {
+			"javaType": "com.ericsson.component.aia.sdk.pba.model.PbaInfo",
+			"type": "object",
+			"required": [
+				"name",
+				"version",
+				"description"
+			],
+			"properties": {
+				"id": {
+					"type": "string"
+				},
+				"parentId": {
+					"type": "string"
+				},
+				"familyName": {
+					"type": "string"
+				},
+				"name": {
+					"type": "string", 
+					"isrequired": true
+				},
+				"title": {
+					"type": "string" 
+				},
+				"version": {
+					"type": "string", 
+					"isrequired": true
+				},
+				"description": {
+					"type": "string", 
+					"isrequired": true
+				}
+			}
+		},
+		"scmInfo": {
+			"type": "object",
+			"required": [
+				"scm",
+				"scmTag"
+			],
+			"properties": {
+				"scm": {
+					"type": "string", 
+					"isrequired": true
+				},
+				"scmTag": {
+					"type": "string", 
+					"isrequired": true
+				}
+			}
+		},
+		"processorInfo": {
+			"javaType": "com.ericsson.component.aia.sdk.pba.model.ProcessorInfo",
+			"type": "object",
+			"required": ["technology", "version"],
+			"properties": {
+				"id": {
+					"type": "string"
+				},
+				"technology": {
+					"type": "string", 
+					"isrequired": true
+				},
+				"version": {
+					"type": "string", 
+					"isrequired": true
+				}
+			}
+		},
+		"extensionPoint": {
+			"type": "object",
+			"required": [
+				"technology",
+				"uri",
+				"attributes"
+			],
+			"properties": {
+				"technology": {
+					"type": "string", 
+					"isrequired": true
+				},	
+				"description": {
+					"type": "string", 
+					"isrequired": true
+				},
+				"name": {
+					"type": "string" 
+				},
+				"uri": {
+					"$ref": "#/definitions/uri"
+				},
+				"attributes": {
+					"$ref": "#/definitions/keyValuePairs"
+				}
+			}
+		},
+		"extensionPoints": {
+			"type": "array",
+			"minItems": 0,
+			"items": {
+				"$ref": "#/definitions/extensionPoint"
+			}
+		},
+		"integrationPoint": {
+			"type": "object",
+			"required": [
+				"technology",
+				"uri",
+				"attributes"
+			],
+			"properties": {
+			
+				"technology": {
+					"type": "string", 
+					"isrequired": true
+				},
+				"description": {
+					"type": "string", 
+					"isrequired": true
+				},
+				"name": {
+					"type": "string" 
+				},
+				"uri": {
+					"$ref": "#/definitions/uri"
+				},
+				"attributes": {
+					"$ref": "#/definitions/keyValuePairs"
+				}
+			}
+		},
+		"integrationPoints": {
+			"type": "array",
+			"minItems": 0,
+			"items": {
+				"$ref": "#/definitions/integrationPoint"
+			}
+		},
+		
+		"keyValuePairs": {
+			"type": "array",
+			"items": {
+				"$ref": "#/definitions/keyValuePair"
+			}
+		},
+		"keyValuePair": {
+			"type": "object",
+			"required": [
+				"key",
+				"value"
+			],
+			"properties": {
+				"key": {
+					"type": "string", 
+					"isrequired": true
+				},
+				"value": {
+					"isrequired": true
+				},
+				"regex": {
+					"type": "string" 
+				},
+				"default": {
+					"type": "string" 
+				},
+				"isReadOnly": {
+					"type": "boolean"
+				},
+				"help": {
+					"type": "string", 
+					"isrequired": true
+				}
+			}
+		},
+		"docker": {
+			"type": "object",
+			"required": [
+				"name",
+				"repoBaseUrl",
+				"repoPath",
+				"imagePath",
+				"network",
+				"forcePullImage",
+				"privileged"
+			],
+			"properties": {
+				"name": {
+					"type": "string",
+					"isrequired": true
+				},
+				"repoBaseUrl": {
+					"type": "string",
+					"isrequired": true
+				},
+				"repoPath": {
+					"type": "string",
+					"isrequired": true
+				},
+				"imagePath": {
+					"type": "string",
+					"isrequired": true
+				},
+				"network": {
+					"type": "string",
+					"isrequired": true
+				},
+				"portList": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					},
+					"uniqueItems": true,
+					"isrequired": false
+				},
+				"mountPaths": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					},
+					"uniqueItems": true,
+					"isrequired": true
+				},
+				"mountName": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					},
+					"uniqueItems": true,
+					"isrequired": true
+				},
+				"forcePullImage": {
+					"type": "boolean",
+					"isrequired": true
+				},
+				"privileged": {
+					"type": "boolean",
+					"isrequired": true
+				}
+			}
+		},
+		"buildInfo": {
+			"type": "object",
+			"properties": {
+				"container": {
+					"$ref": "#/definitions/container",
+					"isrequired": true
+				},
+				"dependencies": {
+					"$ref": "#/definitions/dependencies",
+					"isrequired": true
+				}
+			}
+		},
+		"dependencies": {
+			"type": "array",
+			"items": {
+				"type": "string"
+			},
+			"isrequired": false
+		},
+		"container": {
+			"type": "object",
+			"required": [
+				"docker"
+			],
+			"properties": {
+				"docker": {
+					"$ref": "#/definitions/docker",
+					"isrequired": true
+				}
+			}
+		},
+		"deploymentInfo": {
+			"type": "object",
+			"required": [
+				"servicePorts",
+				"maturity",
+				"stagingStatus",
+				"inProduction",
+				"deploymentScope",
+				"noOfInstances",
+				"noOfCpuPerInstance",
+				"memorySize"
+			],
+			"properties": {
+				"servicePorts": {
+					"$ref": "#/definitions/servicePorts",
+					"isrequired": false
+				},
+				"svcname": {
+					"type": "string",
+					"isrequired": false
+				},
+				"maturity": {
+					"type": "integer",
+					"isrequired": true
+				},
+				"stagingStatus": {
+					"type": "boolean",
+					"isrequired": true
+				},
+				"inProduction": {
+					"type": "boolean",
+					"isrequired": true
+				},
+				"deploymentScope": {
+					"type": "string",
+					"isrequired": true
+				},
+				"noOfInstances": {
+					"type": "string",
+					"isrequired": true
+				},
+				"noOfCpuPerInstance": {
+					"type": "string",
+					"isrequired": true
+				},
+				"memorySize": {
+					"type": "string",
+					"isrequired": true
+				},
+				"envArgs": {
+					"$ref": "#/definitions/keyValuePairs"
+				},
+				"appArgs": {
+					"$ref": "#/definitions/keyValuePairs"
+				},
+				"attributes": {
+					"$ref": "#/definitions/keyValuePairs"
+				}
+			}
+		},
+		"servicePorts": {
+			"type": "array",
+			"items": {
+				"$ref": "#/definitions/servicePortsDef"
+			}
+		},
+		"servicePortsDef": {
+			"type": "object",
+			"required": [
+				"srcPort",
+				"targetPort",
+				"protocol"
+			],
+			"properties": {
+				"srcPort": {
+					"type": "integer",
+					"isrequired": false
+				},
+				"targetPort": {
+					"type": "integer",
+					"isrequired": false
+				},
+				"protocol": {
+					"type": "string",
+					"isrequired": false
+				},
+				"isReadOnly": {
+					"type": "boolean"
+				}
+			}
+		},
+		"uri": {
+			"type": "object",
+			"required": [
+				"protocol",
+				"address"
+			],
+			"properties": {
+				"protocol": {
+					"type": "string",
+					"isrequired": true
+				},
+				"address": {
+					"isrequired": true
+				},
+				"args": {
+					"$ref": "#/definitions/keyValuePairs"
+				}
+			}
+		}
+	}
+}

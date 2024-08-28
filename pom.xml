@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<parent>
+	  <groupId>com.ericsson.aia</groupId>
+	  <artifactId>integration</artifactId>
+	  <version>1.0.37</version>
+	</parent>
+	<modelVersion>4.0.0</modelVersion>
+	
+	<name>PBA schema, model generator and utilities</name> 
+	<groupId>com.ericsson.component.aia.sdk</groupId>
+  	<artifactId>sdk-model</artifactId>
+  	<version>1.0.55-SNAPSHOT</version>
+  	<packaging>pom</packaging>
+
+    <properties>
+        <git.repository>AIA/com.ericsson.component.aia.sdk/sdk-model</git.repository>
+    </properties>
+
+    <modules>
+        <module>pba-model</module>
+    </modules>
+
+    <scm>
+        <connection>${ericsson.scm.url}</connection>
+        <developerConnection>${ericsson.scm.url}</developerConnection>
+        <tag>sdk-model-1.0.12</tag>
+    </scm>
+</project>
